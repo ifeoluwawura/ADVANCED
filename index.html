@@ -3,36 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <title>Document</title>
 </head>
+<body class="bg-gray-80 min-h-screen ">
 
-<body class="bg-gray-100 p-5">
-
-    <nav class="flex gap-5 mb-6 text-sm font-semibold">
-  <a href="#" class="text-black border-b-4 border-black pb-1">
-    All
-  </a>
-  <a href="#" class="text-gray-500 hover:text-black">
-    Cloth
-  </a>
-  <a href="#" class="text-gray-500 hover:text-black">
-    Perfume
-  </a>
-  <a href="#" class="text-gray-500 hover:text-black">
-    Beauty
-  </a>
-</nav>
-
-    <input id="searchBar" type="text" placeholder="Search" class="flex-1 px-4 py-3 outline-none bg-gray-300 border text-black w-full rounded-full">
-
-    
-    <section id="products" class="grid grid-cols-2 gap-3 p-3"></section>
-    <p id="notFound" class=" hiddden text-gray-500"></p>
-
+    <section id="ourProducts" class="grid grid-cols-1 gap-6 max-w-7xl mx-auto"></section>
     
     
-    <script src="advanceda.js"></script>
+    <script src="fetch.js"></script>
 </body>
 </html>
