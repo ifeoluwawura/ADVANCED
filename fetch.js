@@ -1,4 +1,8 @@
-const fetchData = {
+
+let products = [];
+async function getproducts() {
+    try{
+        const fetchData = {
     method: "GET",
     headers: {
         'Content-Type': 'application/json',
@@ -6,18 +10,15 @@ const fetchData = {
         Authorization: "Bearer hchcjdjcjc"
     },
 };
+    let url = "https://dummyjson.com/products?limit=10"
 
-let products = [];
+    let response = await fetch(url,fetchData);
+    let data = await response.json();
+        console.log(data);
+        products = data.products;
+        console.log(products);    
 
-fetch("https://dummyjson.com/products?limit=10",fetchData)
-.then(response => response.json())
-.then(data => {
-    products = data.products;
-
-    console.log("products");
-
-
-    let myproductContent = products.map(product => {
+    let myproductContent = products.map(function(product){
        return `
         <div class="bg-white border border-gray-200 shadow-sm p-5 text-center flex flex-col justify-between rounded-lg">
             <div class="w-full h-32 flex items-center justify-center bg-gray-50 rounded mb-3 overflow-hidden">
@@ -30,10 +31,21 @@ fetch("https://dummyjson.com/products?limit=10",fetchData)
             <p class="text-xs font-bold text-yellow-500">PRICE: $${product.price}</p>
         
         </div>
-    `;
-    })
+        </div>
+    `
+    });
 
     document.querySelector('#ourProducts').innerHTML = myproductContent.join("")
 
-});
+    } catch(error){
+        console.log(error);
+        document.querySelector('#userError').innerHTML = "Error loading products..."
+    } finally{
+        console.log("Fetching completed");
+    }
+}
+
+getproducts();
+
+
 
